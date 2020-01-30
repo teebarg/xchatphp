@@ -17,6 +17,7 @@ jobs:
           name: "Prepare Environment"
           command: |
             sudo apt update
+            sudo apt install -y postgresql-dev
             sudo docker-php-ext-install zip
             sudo docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
             sudo docker-php-ext-install pdo pdo_pgsql
