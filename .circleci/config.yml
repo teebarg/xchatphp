@@ -56,7 +56,7 @@ jobs:
       - run:
           name: "Create database and run migration"
           command: |
-            php artisan migrate: --env=testing
+            php artisan migrate --env=testing
             php artisan db:seed
 
       - run:
