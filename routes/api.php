@@ -31,6 +31,7 @@ Route::post('private-messages', 'ChatsController@sendMessage');
 
 Route::get('social', 'SocialController@index');
 Route::post('social/manage/{user}', 'SocialController@manage');
+Route::post('social/search', 'SocialController@search');
 
 //Route::apiResource('roles', 'RolesController');
 //Route::apiResource('permissions', 'PermissionsController');

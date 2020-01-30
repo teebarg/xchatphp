@@ -17,7 +17,7 @@ class SocialController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['jwt.verify']);
+        $this->middleware(['jwt.verify'], ['except' => ['search']]);
     }
 
     /**
@@ -44,5 +44,18 @@ class SocialController extends Controller
         $authenticated = auth()->user();
         $test = $authenticated->toggleFollow($user);
         return ResponseHelper::createSuccessResponse($test, 'Operation Successful');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return Response
+     */
+    public function search()
+    {
+        $user = User::search('');
+        dd($user);
+        dd(request('keyword'));
+        return ResponseHelper::createSuccessResponse([], 'Operation Successful');
     }
 }

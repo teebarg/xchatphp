@@ -11,12 +11,35 @@ use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
+//use ScoutElastic\Searchable;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use HasRoles;
     use CanFollow, CanBeFollowed;
+//    use Searchable;
+
+    protected $indexConfigurator = UserConfigurator::class;
+
+    protected $searchRules = [
+        //
+    ];
+
+    // Here you can specify a mapping for model fields
+    protected $mapping = [
+        'properties' => [
+            'username' => [
+                'type' => 'text',
+                // Also you can configure multi-fields, more details you can find here https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html
+                'fields' => [
+                    'raw' => [
+                        'type' => 'keyword',
+                    ]
+                ]
+            ],
+        ]
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -84,6 +107,29 @@ class User extends Authenticatable implements JWTSubject
             'lastname' => '',
             'mobile' => 'nullable|unique:users,mobile,'.$this->id
         ];
+    }
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'users_index';
+    }
+
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        // Customize array...
+
+        return $this->toArray();
     }
 
     public function image()

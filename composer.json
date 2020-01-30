@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "babenkoivan/scout-elasticsearch-driver": "^4.0",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "laravel/framework": "^6.2",
@@ -20,6 +21,11 @@
         "tymon/jwt-auth": "^1.0.0"
     },
     "require-dev": {
+        "codeception/codeception": "^4.0",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-laravel5": "^1.0",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-rest": "^1.1",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
