@@ -78,8 +78,8 @@ workflows:
   -deploy:
     jobs:
       - build
-        filters:
-          branches:
-            only:
-              - staging
-              - master
+          filters:
+            branches:
+              only:
+                - staging
+                - master
