@@ -61,7 +61,7 @@ jobs:
 
       - run:
           name: "Generate JWT encryption keys"
-          command: php artisan jwt:secret
+          command: php artisan
 
       # run tests with phpunit
       - run:
