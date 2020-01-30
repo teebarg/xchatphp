@@ -74,10 +74,9 @@ jobs:
 
 workflows:
   version: 2
-
-  -deploy:
+  deploy:
     jobs:
-      - build
+      - build:
           filters:
             branches:
               only:
