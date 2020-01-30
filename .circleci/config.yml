@@ -74,12 +74,11 @@ jobs:
 
 workflows:
   version: 2
-
-  -deploy:
+  deploy:
     jobs:
-      - build
-        filters:
-          branches:
-            only:
-              - staging
-              - master
+      - build:
+          filters:
+            branches:
+              only:
+                - staging
+                - master
